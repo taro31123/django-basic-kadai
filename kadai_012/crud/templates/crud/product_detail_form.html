@@ -1,0 +1,30 @@
+<!-- テンプレート名は_formをつけないと読み込まれない -->
+{% extends "base.html" %}
+
+{% block title %}商品詳細{% endblock %}
+{% block content %}
+<h1>商品詳細</h1>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>カテゴリ</th>
+            <th>画像</th>
+            <th>詳細説明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- views.pyのclass内でcontext_object_nameを使用していないため、objectで渡される -->
+            <td>{{ object.name }}</td> 
+            <td>{{ object.price }} 円</td>
+            <td>{{ product.category }}</td>
+            <td><img src="{{ product.img.url }}" style="width:100px height:auto;"></td>
+            <td>{{ product.explanation }}</td>
+        <tr>
+    </tbody>
+</table>    
+<a href="{% url 'list' %}">戻る</a>
+{% endblock %}
